@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sulmar.WPFMVVM.ShopPracz.Db
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesLT_EntityFramework", "SalesLT_EntityFramework\SalesLT_EntityFramework.csproj", "{C7BF4077-A042-42D0-9AAA-4BD2BC2DA275}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sulmar.WPFMVVM.ShopPracz.IServices", "..\Sulmar.WPFMVVM.201711\Sulmar.WPFMVVM.ShopPracz.Services\Sulmar.WPFMVVM.ShopPracz.IServices.csproj", "{A7C80CAD-B1B5-48FF-B951-CFAC43A87274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C7BF4077-A042-42D0-9AAA-4BD2BC2DA275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7BF4077-A042-42D0-9AAA-4BD2BC2DA275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7BF4077-A042-42D0-9AAA-4BD2BC2DA275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C80CAD-B1B5-48FF-B951-CFAC43A87274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C80CAD-B1B5-48FF-B951-CFAC43A87274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C80CAD-B1B5-48FF-B951-CFAC43A87274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C80CAD-B1B5-48FF-B951-CFAC43A87274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

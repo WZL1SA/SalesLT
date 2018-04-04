@@ -6,7 +6,49 @@
         xmlns:local="clr-namespace:SalesLT_EntityFramework"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Tytuł:" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="titleTb"  MinWidth="200" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Imię:" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="nameTb"  MinWidth="200" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Nazwisko:" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="lastNameTb"  MinWidth="200"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Hasło:" />
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="passwordTb"  MinWidth="200" />
+        </Grid>
+        <Button x:Name="sendButton" Content="Wpisz do bazy" Width="100" HorizontalAlignment="Right"
+                Margin="10" Click="sendButton_Click" />
+        <Button x:Name="readButton" Content="Odczytaj z bazy" Width="100" HorizontalAlignment="Right"
+                Margin="10" Click="readButton_Click" />
+        <Button x:Name="saveButton" Content="Zapisz zmiany bazy" Width="100" HorizontalAlignment="Right"
+                Margin="10" Click="saveButton_Click" />
+        <TextBlock x:Name="StatusText" MinWidth="200" />
+        <DataGrid Height="300"  x:Name="dataGrid">
+
+            <!--<DataGrid.Columns>
+                <DataGridTextColumn x:Name="colFirstName" Binding="{Binding Path=FirstName}" ClipboardContentBinding="{x:Null}" />
+                <DataGridTextColumn x:Name="colLastName" Binding="{Binding Path=LastName}" ClipboardContentBinding="{x:Null}" />
+                <DataGridTextColumn x:Name="colTitle" Binding="{Binding Path=Title}" ClipboardContentBinding="{x:Null}" />
+               
+            </DataGrid.Columns>-->
+
+        </DataGrid>
+
+
+    </StackPanel>
 </Window>
