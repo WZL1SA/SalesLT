@@ -60,16 +60,23 @@ namespace SalesLT
                 {
                     foreach(var item in e.OldItems)
                     {
-                        var command = connection.CreateCommand();
-                        var itemDc = (GridDataContext)item;
-                        command.CommandText = "DELETE FROM SalesLT.Customer WHERE CustomerID=?";
-                        command.Parameters.AddWithValue("@CustomerID", itemDc.CustomerID);
-                        var result = command.ExecuteNonQuery();
+                        int result = DeleteItem(item);
                         StatusText.Text = string.Format("Usunięto {0} rekodrów", result);
                         deleted = false;
                     }
                 }
             }
+        }
+
+        private int DeleteItem(object item)
+        {
+            CheckAndEstablishConnection();
+            var command = connection.CreateCommand();
+            var itemDc = (GridDataContext)item;
+            command.CommandText = "DELETE FROM SalesLT.Customer WHERE CustomerID=?";
+            command.Parameters.AddWithValue("@CustomerID", itemDc.CustomerID);
+            var result = command.ExecuteNonQuery();
+            return result;
         }
 
         private void DataGrid_KeyUp(object sender, KeyEventArgs e)
@@ -86,18 +93,24 @@ namespace SalesLT
             {
                 var rowItemColl = from p in GridData where p.CustomerID == rowToChange select p;
                 var rowItem = rowItemColl.First();
-                CheckAndEstablishConnection();
-
-                var command = connection.CreateCommand();
-                command.CommandText = "UPDATE SalesLT.Customer SET FirstName=?, LastName=?, Title=? WHERE CustomerID=?";
-                command.Parameters.AddWithValue("@FirstName", rowItem.FirstName);
-                command.Parameters.AddWithValue("@LastName", rowItem.LastName);
-                command.Parameters.AddWithValue("@Title", rowItem.Title);
-                command.Parameters.AddWithValue("@CustomerID", rowItem.CustomerID);
-                var result = command.ExecuteNonQuery();
+                int result = UpdateItem(rowItem);
                 StatusText.Text = string.Format("Zmodyfikowano {0} rekordów!", result);
                 rowToChange = 0;
             }
+        }
+
+        private int UpdateItem(GridDataContext rowItem)
+        {
+            CheckAndEstablishConnection();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE SalesLT.Customer SET FirstName=?, LastName=?, Title=? WHERE CustomerID=?";
+            command.Parameters.AddWithValue("@FirstName", rowItem.FirstName);
+            command.Parameters.AddWithValue("@LastName", rowItem.LastName);
+            command.Parameters.AddWithValue("@Title", rowItem.Title);
+            command.Parameters.AddWithValue("@CustomerID", rowItem.CustomerID);
+            var result = command.ExecuteNonQuery();
+            return result;
         }
 
         private void RowEditingDone(object sender, DataGridRowEditEndingEventArgs e)
