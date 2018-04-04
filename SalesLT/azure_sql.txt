@@ -1,0 +1,1 @@
+Driver={ODBC Driver 13 for SQL Server};Server=tcp:wzl-training.database.windows.net,1433;Database=wzl;Uid=su@wzl-training;Pwd=Cokolwiek#1;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
