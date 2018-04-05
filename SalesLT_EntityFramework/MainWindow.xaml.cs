@@ -35,11 +35,13 @@ namespace SalesLT_EntityFramework
 
 
         public ObservableCollection<Customer> Customers { get; set; }
-        private wzlEntities context; //twoży obiekt otwiera połączenie operujemy na obiekcie wewnątrz klamer
+        //private wzlEntities context; //twoży obiekt otwiera połączenie operujemy na obiekcie wewnątrz klamer
+        private SalesLTEntities context; //twoży obiekt otwiera połączenie operujemy na obiekcie wewnątrz klamer
         public MainWindow()
         {
             InitializeComponent();
-            context = new wzlEntities();
+            //context = new wzlEntities();//wybór bazy danych
+            context = new SalesLTEntities();//wybór bazy danych
             Customers = new ObservableCollection<Customer>();
             dataGrid.ItemsSource = Customers;
            // Customers.CollectionChanged += Customers_CollectionChanged; //observable collection informuje o każdej zmianie w obiekcie
@@ -182,10 +184,10 @@ namespace SalesLT_EntityFramework
                     FirstName = firstName,
                     LastName = lastName,
                     Title = title,
-                    PasswordHash = password,
-                    PasswordSalt = password,
-                    ModifiedDate = DateTime.Now ,  //należy dodać rekordy które w bazie są ustawione na not null
-                    rowguid = Guid.NewGuid()  //globalnie unikalny identyfikator 
+                    //PasswordHash = password,
+                    //PasswordSalt = password,
+                    //ModifiedDate = DateTime.Now ,  //należy dodać rekordy które w bazie są ustawione na not null
+                    //rowguid = Guid.NewGuid()  //globalnie unikalny identyfikator 
                 }
                     );
                 context.SaveChanges();
