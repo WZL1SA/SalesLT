@@ -5,8 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WzlInvoicePdf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="500" Width="800">
+    <StackPanel>
+        <DockPanel>
+            <Grid Width="320" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="220" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Kod towaru: " />
+                <TextBox x:Name="ItemCodeTb" Grid.Column="1" Grid.Row="0" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Nazwa towaru: " />
+                <TextBox x:Name="ItemNameTb" Grid.Column="1" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0" />
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Ilość: " />
+                <TextBox x:Name="ItemQuantityTb" Grid.Column="1" Grid.Row="2" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Cena jednostkowa: " />
+                <TextBox x:Name="ItemPriceTb" Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Stawka VAT: " />
+                <TextBox x:Name="ItemVatTb" Grid.Column="1" Grid.Row="4" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+            </Grid>
+            <Button 
+                x:Name="AddItemToInvoice"
+                Content="Dodaj do faktury"
+                Height="20" Width="120"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Click="AddItemToInvoice_Click"
+                Margin="10"
+                />
+           
+            <Grid HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="220" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Nazwa odbiorcy: " />
+                <TextBox x:Name="CustomerNameTb" Grid.Column="1" Grid.Row="0" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="NIP odbiorcy: " />
+                <TextBox x:Name="CustomerTaxtIdTb" Grid.Column="1" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0" />
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Adres odbiorcy: " />
+                <TextBox x:Name="CustomerAddressTb" Grid.Column="1" Grid.Row="2" Width="200" HorizontalAlignment="Left" Margin="10,2,2,0"/>
+
+                
+            </Grid>
+        </DockPanel>
+        <DataGrid x:Name="InvoiceItems" Height="300" CanUserAddRows="False" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Good.ItemCode}" Header="Item code" />
+                <DataGridTextColumn Binding="{Binding Path=Good.ItemName}" Header="Item name" />
+                <DataGridTextColumn Binding="{Binding Path=Good.ItemPrice}" Header="Item price" />
+                <DataGridTextColumn Binding="{Binding Path=Good.ItemVat}" Header="Item VAT" />
+                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Quantity" />
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <Button 
+                x:Name="GenerateInvoiceItem"
+                Content="Generuj fakturę"                
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Click="GenerateInvoiceItem_Click"         
+                Margin="5"
+                Width="150"
+                Height="30"
+                />
+    </StackPanel>
+    
 </Window>
